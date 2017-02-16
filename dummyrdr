@@ -1,0 +1,13 @@
+# Configuration file for pcsc-lite
+#
+# This file has to be configured for serial and PCMCIA readers only.
+# normal USB readers shall _not_ be configured here!
+#
+# David Corcoran <corcoran@linuxnet.com>
+
+FRIENDLYNAME     "Dummy Reader"
+DEVICENAME       /dev/ttyS0
+LIBPATH          /usr/lib/pcsc/drivers/serial/libdummyrdr.so
+CHANNELID        1
+
+# End of file
