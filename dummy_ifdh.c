@@ -19,6 +19,15 @@ RESPONSECODE IFDHCreateChannel(DWORD Lun, DWORD Channel)
 	return IFD_SUCCESS;
 }
 
+RESPONSECODE IFDHCreateChannelByName(DWORD Lun,
+		LPSTR deviceName)
+{
+	(void)Lun;
+	(void)deviceName;
+
+	return IFD_SUCCESS;
+}
+
 RESPONSECODE IFDHCloseChannel(DWORD Lun)
 {
 #ifdef DEBUG
