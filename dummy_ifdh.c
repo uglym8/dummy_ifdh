@@ -212,14 +212,14 @@ RESPONSECODE IFDHTransmitToICC( DWORD Lun, SCARD_IO_HEADER SendPci,
 	(void)SendPci;
 	(void)RecvPci;
 
-	unsigned char trigger_apdu[6] = {0x00, 0xCA, 0x01, 0x81, 0x00, 0x00};
+	unsigned char trigger_apdu[5] = {0x00, 0xCA, 0x81, 0x00, 0x00};
 
 
 	if (TxLength == sizeof(trigger_apdu)) {
 
-		if (!memcmp((void *)trigger_apdu, (void *)TxBuffer, 4)) {
+		if (!memcmp((void *)trigger_apdu, (void *)TxBuffer, 3)) {
 
-			reslen = (TxBuffer[4] << 8) | TxBuffer[5];
+			reslen = (TxBuffer[3] << 8) | TxBuffer[4];
 
 			/* Add up SW1(2) */
 			reslen += 2;
