@@ -1,0 +1,27 @@
+Quick dummy IFD handler to test rdesktop smardcard redirection improvement.
+
+To build just run:
+
+$ make
+
+Copy resulting library to your PCSC serial driver path (e.g. /usr/lib/pcsc/drivers/serial/).
+Copy dummyrdr (or merge it with existing configuration file) to your PCSC config location (e.g. /etc/reader.conf.d/)
+
+Start pcscd if it's not started automatically.
+
+You should see "Dummy Reader" as one of the available readers.
+
+Notes:
+1) Only T1 is supported (due to chosen historical bytes)
+2) There's one special APDU
+
+0x00 0xCA 0x81 0xAA 0xBB that generates 0xAABB bytes with value 0xAA.
+
+So
+0x00 0xCA 0x81 0x00 0x02 will generate
+
+0xAA 0xAA 0x90 0x00 as a response
+
+
+All other APDUs result in 0x9000.
+
